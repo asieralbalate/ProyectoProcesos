@@ -9,15 +9,15 @@ public class Objetivos {
     private Date fechaFin;
 
     private String username;
-    private Long meta;
+    private Long meta_id;
 
-    public Objetivos(Long id, String nombre, Date fechaInicio, Date fechaFin, String username, Long meta) {
+    public Objetivos(Long id, String nombre, Date fechaInicio, Date fechaFin, String username, Long meta_id) {
         this.id = id;
         this.nombre = nombre;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
         this.username = username;
-        this.meta = meta;
+        this.meta_id = meta_id;
     }
 
     public Long getId() {
@@ -60,11 +60,11 @@ public class Objetivos {
         this.username = username;
     }
 
-    public Long getMeta() {
-        return meta;
+    public Long getMeta_id() {
+        return meta_id;
     }
 
-    public void setMeta(Long meta) {
-        this.meta = meta;
+    public void setMeta_id(Long meta_id) {
+        this.meta_id = meta_id;
     }
 }

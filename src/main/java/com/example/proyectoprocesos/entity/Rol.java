@@ -5,14 +5,11 @@ public enum Rol {
     ASESOR("ASESOR"),
     USUARIO("USUARIO");
 
-
     private final String rol;
-
 
     Rol(String rol) {
         this.rol = rol;
     }
-
 
     public String getRol() {
         return rol;

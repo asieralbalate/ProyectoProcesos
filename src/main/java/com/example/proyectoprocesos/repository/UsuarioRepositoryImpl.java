@@ -18,14 +18,13 @@ public class UsuarioRepositoryImpl implements UsuarioRepository{
 
     @Override
     public void saveUsuario(Usuario user) {
-        String sql = "INSERT INTO Usuario (username, password, rol) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO usuarios (username, password, rol) VALUES (?, ?, ?)";
         jdbcTemplate.update(sql, user.getUsername(), PasswordEncryptor.encrypt(user.getPassword()), user.getRol());
-
     }
 
     @Override
     public List<Usuario> getUsuarios() {
-        String sql = "SELECT username, password, rol FROM Usuario";
+        String sql = "SELECT username, password, rol FROM usuarios";
         return jdbcTemplate.query(sql, (resultSet, rowNum) ->
                 new Usuario(
                         resultSet.getString("username"),

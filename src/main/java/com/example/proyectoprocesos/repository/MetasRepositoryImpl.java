@@ -3,6 +3,7 @@ package com.example.proyectoprocesos.repository;
 import com.example.proyectoprocesos.entity.Metas;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -14,11 +15,13 @@ public class MetasRepositoryImpl implements MetasRepository{
         this.jdbcTemplate = jdbcTemplate;
     }
 
+    @Transactional
     @Override
     public void crearMetas(Metas metas) {
         String sql = "INSERT INTO metas (id, nombre, descripcion) VALUES (?, ?, ?);";
         jdbcTemplate.update(sql, metas.getId(), metas.getNombre(), metas.getDescripcion());
     }
+
 
     @Override
     public void borrarMeta(Long id) {
@@ -43,6 +46,7 @@ public class MetasRepositoryImpl implements MetasRepository{
                 ));
     }
 
+    @Transactional
     @Override
     public Metas findById(Long id) {
         String sql = "SELECT id, nombre, descripcion FROM metas WHERE id = ?";

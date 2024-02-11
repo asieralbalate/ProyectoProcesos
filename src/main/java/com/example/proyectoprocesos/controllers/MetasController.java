@@ -5,8 +5,6 @@ import com.example.proyectoprocesos.services.IMetasService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -38,17 +36,19 @@ public class MetasController {
     }
 
     @PostMapping
-    public void nuevaMeta(@RequestBody Metas metas){
-       iMetasService.crearMetas(metas);
+    public ResponseEntity<?> nuevaMeta(@RequestBody Metas metas) {
+        iMetasService.crearMetas(metas);
+        return ResponseEntity.ok("Meta creada exitosamente");
     }
 
-    @PostMapping("/{id}")
+    @PutMapping("/{id}")
     public void actualizarMeta(@RequestBody Metas metas, @PathVariable Long id){
         iMetasService.actualizarMeta(metas, id);
     }
 
     @DeleteMapping("/{id}")
-    public void eliminarMeta(@PathVariable Long id){
+    public ResponseEntity<?> borrarMeta(@PathVariable Long id) {
         iMetasService.borrarMeta(id);
+        return ResponseEntity.ok("Meta eliminada exitosamente");
     }
 }

@@ -45,22 +45,17 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        System.out.println("Prueba");
-
         try {
             if (isJWTValid(request, response)) {
                 Claims claims = setSigningKey(request);
                 if (claims.get("authorities") != null) {
                     setAuthentication(claims);
                     List<String> authorities = (List<String>) claims.get("authorities");
-                    // Manejar los roles obtenidos
                     for (String authority : authorities) {
                         System.out.println("Rol: " + authority);
                     }
-
                 } else {
                     SecurityContextHolder.clearContext();
-                    System.out.println("2");
                 }
             } else {
                 SecurityContextHolder.clearContext();

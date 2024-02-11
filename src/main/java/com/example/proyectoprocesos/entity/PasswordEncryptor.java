@@ -24,7 +24,6 @@ public class PasswordEncryptor {
         }
     }
 
-
     public static String decrypt(String encryptedText) {
         try {
             Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5PADDING");

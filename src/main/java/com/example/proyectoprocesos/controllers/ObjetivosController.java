@@ -37,11 +37,9 @@ public class ObjetivosController {
         }
     }
 
-    @GetMapping("/{mine}")
-    public List<Objetivos> findMine(){
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String currentName = authentication.getName();
-        return iObjetivoService.findMine(currentName);
+    @GetMapping("/username/{username}")
+    public List<Objetivos> findMine(@PathVariable String username){
+        return iObjetivoService.findMine(username);
     }
 
     @PostMapping
@@ -52,7 +50,7 @@ public class ObjetivosController {
         iObjetivoService.crearObjetivo(objetivos);
     }
 
-    @PostMapping("/{id}")
+    @PutMapping("/{id}")
     public void actualizarObjetivo(@RequestBody Objetivos objetivos, @PathVariable Long id){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentName = authentication.getName();

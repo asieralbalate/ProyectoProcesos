@@ -12,7 +12,7 @@ public class Constants {
 
     public static final String ADMIN_URL = "http://localhost:8080/admin/metas";
     public static final String ASESOR_URL = "http://localhost:8080/asesor/objetivos";
-    public static final String USUARIO_URL = "http://localhost:8080/usuario/objetivos";
+    public static final String USUARIO_URL = "http://localhost:8080/usuario/listaseguimiento";
 
 
     public static final String SECRET_KEY = "1234567890123456"; // Clave secreta para AES (16, 24 o 32 bytes)
